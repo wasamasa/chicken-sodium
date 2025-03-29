@@ -30,10 +30,21 @@
  random-uniform
  random-blob)
 
-(import chicken scheme foreign)
-(foreign-declare "#include <sodium.h>")
+(cond-expand
+ (chicken-4
+  (import chicken scheme foreign)
+  (use lolevel srfi-4))
+ (chicken-5
+  (import scheme)
+  (import (chicken base))
+  (import (chicken blob))
+  (import (chicken condition))
+  (import (chicken fixnum))
+  (import (chicken foreign))
+  (import (chicken format))
+  (import (srfi 4))))
 
-(use lolevel srfi-4)
+(foreign-declare "#include <sodium.h>")
 
 (define sodium-version-string
   (foreign-lambda c-string "sodium_version_string"))

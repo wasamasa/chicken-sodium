@@ -1,4 +1,14 @@
-(use sodium srfi-1 test)
+(cond-expand
+ (chicken-4
+  (use sodium srfi-1 test))
+ (chicken-5
+  (import scheme)
+  (import (chicken base))
+  (import (chicken blob))
+  (import (chicken string))
+  (import sodium)
+  (import (srfi 1))
+  (import test)))
 
 (test-group "helpers"
   (test-assert "constant-time-blob=? equal blobs"

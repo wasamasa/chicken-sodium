@@ -1,0 +1,7 @@
+((synopsis "Bindings to the Sodium crypto library (libsodium)")
+ (author "Caolan McMahon")
+ (category crypt)
+ (license "ISC")
+ (component-options (csc-options "-O2" "-d1" "-L" "-lsodium"))
+ (components (extension sodium))
+ (test-dependencies test))
